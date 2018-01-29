@@ -52,3 +52,7 @@ void chess_board::printBoard() {
         std::cout << std::endl;
     }
 }
+
+void chess_board::move(int row, int col) {
+    _chessboard[row][col] = (_chessboard[row][col] == -1 ) ? 1 : _chessboard[row][col]++;
+}

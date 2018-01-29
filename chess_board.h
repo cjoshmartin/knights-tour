@@ -16,7 +16,8 @@ class chess_board {
 public:
     chess_board(int,int);
     ~chess_board(void);
-    int ** getBoard();
+    int ** getBoard(void);
+    void move(int row, int col);
     void printBoard();
 
 private:

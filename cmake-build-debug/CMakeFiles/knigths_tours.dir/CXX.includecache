@@ -6,6 +6,14 @@
 
 #IncludeRegexTransform: 
 
+/Users/josh/Documents/School/Junior/spring/csci362/projects/knigths-tours/Stack.cpp
+Stack.h
+/Users/josh/Documents/School/Junior/spring/csci362/projects/knigths-tours/Stack.h
+
+/Users/josh/Documents/School/Junior/spring/csci362/projects/knigths-tours/Stack.h
+postion.h
+/Users/josh/Documents/School/Junior/spring/csci362/projects/knigths-tours/postion.h
+
 /Users/josh/Documents/School/Junior/spring/csci362/projects/knigths-tours/chess_board.cpp
 iostream
 -
@@ -19,4 +27,8 @@ iostream
 -
 chess_board.h
 /Users/josh/Documents/School/Junior/spring/csci362/projects/knigths-tours/chess_board.h
+Stack.h
+/Users/josh/Documents/School/Junior/spring/csci362/projects/knigths-tours/Stack.h
+
+/Users/josh/Documents/School/Junior/spring/csci362/projects/knigths-tours/postion.h
 

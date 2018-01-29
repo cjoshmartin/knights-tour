@@ -105,19 +105,71 @@ CMakeFiles/knigths_tours.dir/chess_board.cpp.o.provides: CMakeFiles/knigths_tour
 CMakeFiles/knigths_tours.dir/chess_board.cpp.o.provides.build: CMakeFiles/knigths_tours.dir/chess_board.cpp.o
 
 
+CMakeFiles/knigths_tours.dir/State.cpp.o: CMakeFiles/knigths_tours.dir/flags.make
+CMakeFiles/knigths_tours.dir/State.cpp.o: ../State.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/josh/Documents/School/Junior/spring/csci362/projects/knigths-tours/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/knigths_tours.dir/State.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/knigths_tours.dir/State.cpp.o -c /Users/josh/Documents/School/Junior/spring/csci362/projects/knigths-tours/State.cpp
+
+CMakeFiles/knigths_tours.dir/State.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/knigths_tours.dir/State.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/josh/Documents/School/Junior/spring/csci362/projects/knigths-tours/State.cpp > CMakeFiles/knigths_tours.dir/State.cpp.i
+
+CMakeFiles/knigths_tours.dir/State.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/knigths_tours.dir/State.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/josh/Documents/School/Junior/spring/csci362/projects/knigths-tours/State.cpp -o CMakeFiles/knigths_tours.dir/State.cpp.s
+
+CMakeFiles/knigths_tours.dir/State.cpp.o.requires:
+
+.PHONY : CMakeFiles/knigths_tours.dir/State.cpp.o.requires
+
+CMakeFiles/knigths_tours.dir/State.cpp.o.provides: CMakeFiles/knigths_tours.dir/State.cpp.o.requires
+	$(MAKE) -f CMakeFiles/knigths_tours.dir/build.make CMakeFiles/knigths_tours.dir/State.cpp.o.provides.build
+.PHONY : CMakeFiles/knigths_tours.dir/State.cpp.o.provides
+
+CMakeFiles/knigths_tours.dir/State.cpp.o.provides.build: CMakeFiles/knigths_tours.dir/State.cpp.o
+
+
+CMakeFiles/knigths_tours.dir/Stack.cpp.o: CMakeFiles/knigths_tours.dir/flags.make
+CMakeFiles/knigths_tours.dir/Stack.cpp.o: ../Stack.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/josh/Documents/School/Junior/spring/csci362/projects/knigths-tours/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/knigths_tours.dir/Stack.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/knigths_tours.dir/Stack.cpp.o -c /Users/josh/Documents/School/Junior/spring/csci362/projects/knigths-tours/Stack.cpp
+
+CMakeFiles/knigths_tours.dir/Stack.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/knigths_tours.dir/Stack.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/josh/Documents/School/Junior/spring/csci362/projects/knigths-tours/Stack.cpp > CMakeFiles/knigths_tours.dir/Stack.cpp.i
+
+CMakeFiles/knigths_tours.dir/Stack.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/knigths_tours.dir/Stack.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/josh/Documents/School/Junior/spring/csci362/projects/knigths-tours/Stack.cpp -o CMakeFiles/knigths_tours.dir/Stack.cpp.s
+
+CMakeFiles/knigths_tours.dir/Stack.cpp.o.requires:
+
+.PHONY : CMakeFiles/knigths_tours.dir/Stack.cpp.o.requires
+
+CMakeFiles/knigths_tours.dir/Stack.cpp.o.provides: CMakeFiles/knigths_tours.dir/Stack.cpp.o.requires
+	$(MAKE) -f CMakeFiles/knigths_tours.dir/build.make CMakeFiles/knigths_tours.dir/Stack.cpp.o.provides.build
+.PHONY : CMakeFiles/knigths_tours.dir/Stack.cpp.o.provides
+
+CMakeFiles/knigths_tours.dir/Stack.cpp.o.provides.build: CMakeFiles/knigths_tours.dir/Stack.cpp.o
+
+
 # Object files for target knigths_tours
 knigths_tours_OBJECTS = \
 "CMakeFiles/knigths_tours.dir/driver.cpp.o" \
-"CMakeFiles/knigths_tours.dir/chess_board.cpp.o"
+"CMakeFiles/knigths_tours.dir/chess_board.cpp.o" \
+"CMakeFiles/knigths_tours.dir/State.cpp.o" \
+"CMakeFiles/knigths_tours.dir/Stack.cpp.o"
 
 # External object files for target knigths_tours
 knigths_tours_EXTERNAL_OBJECTS =
 
 knigths_tours: CMakeFiles/knigths_tours.dir/driver.cpp.o
 knigths_tours: CMakeFiles/knigths_tours.dir/chess_board.cpp.o
+knigths_tours: CMakeFiles/knigths_tours.dir/State.cpp.o
+knigths_tours: CMakeFiles/knigths_tours.dir/Stack.cpp.o
 knigths_tours: CMakeFiles/knigths_tours.dir/build.make
 knigths_tours: CMakeFiles/knigths_tours.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/josh/Documents/School/Junior/spring/csci362/projects/knigths-tours/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable knigths_tours"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/josh/Documents/School/Junior/spring/csci362/projects/knigths-tours/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable knigths_tours"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/knigths_tours.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -127,6 +179,8 @@ CMakeFiles/knigths_tours.dir/build: knigths_tours
 
 CMakeFiles/knigths_tours.dir/requires: CMakeFiles/knigths_tours.dir/driver.cpp.o.requires
 CMakeFiles/knigths_tours.dir/requires: CMakeFiles/knigths_tours.dir/chess_board.cpp.o.requires
+CMakeFiles/knigths_tours.dir/requires: CMakeFiles/knigths_tours.dir/State.cpp.o.requires
+CMakeFiles/knigths_tours.dir/requires: CMakeFiles/knigths_tours.dir/Stack.cpp.o.requires
 
 .PHONY : CMakeFiles/knigths_tours.dir/requires
 

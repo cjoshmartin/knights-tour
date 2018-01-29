@@ -123,6 +123,60 @@ knigths_tours/fast:
 	$(MAKE) -f CMakeFiles/knigths_tours.dir/build.make CMakeFiles/knigths_tours.dir/build
 .PHONY : knigths_tours/fast
 
+Stack.o: Stack.cpp.o
+
+.PHONY : Stack.o
+
+# target to build an object file
+Stack.cpp.o:
+	$(MAKE) -f CMakeFiles/knigths_tours.dir/build.make CMakeFiles/knigths_tours.dir/Stack.cpp.o
+.PHONY : Stack.cpp.o
+
+Stack.i: Stack.cpp.i
+
+.PHONY : Stack.i
+
+# target to preprocess a source file
+Stack.cpp.i:
+	$(MAKE) -f CMakeFiles/knigths_tours.dir/build.make CMakeFiles/knigths_tours.dir/Stack.cpp.i
+.PHONY : Stack.cpp.i
+
+Stack.s: Stack.cpp.s
+
+.PHONY : Stack.s
+
+# target to generate assembly for a file
+Stack.cpp.s:
+	$(MAKE) -f CMakeFiles/knigths_tours.dir/build.make CMakeFiles/knigths_tours.dir/Stack.cpp.s
+.PHONY : Stack.cpp.s
+
+State.o: State.cpp.o
+
+.PHONY : State.o
+
+# target to build an object file
+State.cpp.o:
+	$(MAKE) -f CMakeFiles/knigths_tours.dir/build.make CMakeFiles/knigths_tours.dir/State.cpp.o
+.PHONY : State.cpp.o
+
+State.i: State.cpp.i
+
+.PHONY : State.i
+
+# target to preprocess a source file
+State.cpp.i:
+	$(MAKE) -f CMakeFiles/knigths_tours.dir/build.make CMakeFiles/knigths_tours.dir/State.cpp.i
+.PHONY : State.cpp.i
+
+State.s: State.cpp.s
+
+.PHONY : State.s
+
+# target to generate assembly for a file
+State.cpp.s:
+	$(MAKE) -f CMakeFiles/knigths_tours.dir/build.make CMakeFiles/knigths_tours.dir/State.cpp.s
+.PHONY : State.cpp.s
+
 chess_board.o: chess_board.cpp.o
 
 .PHONY : chess_board.o
@@ -186,6 +240,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... knigths_tours"
+	@echo "... Stack.o"
+	@echo "... Stack.i"
+	@echo "... Stack.s"
+	@echo "... State.o"
+	@echo "... State.i"
+	@echo "... State.s"
 	@echo "... chess_board.o"
 	@echo "... chess_board.i"
 	@echo "... chess_board.s"

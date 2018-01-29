@@ -82,6 +82,18 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/josh/Documents/School/Junior/spring/csci362/projects/knigths-tours/Stack.cpp">
+			<Option target="knigths_tours"/>
+		</Unit>
+		<Unit filename="/Users/josh/Documents/School/Junior/spring/csci362/projects/knigths-tours/Stack.h">
+			<Option target="knigths_tours"/>
+		</Unit>
+		<Unit filename="/Users/josh/Documents/School/Junior/spring/csci362/projects/knigths-tours/State.cpp">
+			<Option target="knigths_tours"/>
+		</Unit>
+		<Unit filename="/Users/josh/Documents/School/Junior/spring/csci362/projects/knigths-tours/State.h">
+			<Option target="knigths_tours"/>
+		</Unit>
 		<Unit filename="/Users/josh/Documents/School/Junior/spring/csci362/projects/knigths-tours/chess_board.cpp">
 			<Option target="knigths_tours"/>
 		</Unit>
@@ -89,6 +101,9 @@
 			<Option target="knigths_tours"/>
 		</Unit>
 		<Unit filename="/Users/josh/Documents/School/Junior/spring/csci362/projects/knigths-tours/driver.cpp">
+			<Option target="knigths_tours"/>
+		</Unit>
+		<Unit filename="/Users/josh/Documents/School/Junior/spring/csci362/projects/knigths-tours/postion.h">
 			<Option target="knigths_tours"/>
 		</Unit>
 		<Unit filename="/Users/josh/Documents/School/Junior/spring/csci362/projects/knigths-tours/CMakeLists.txt">
