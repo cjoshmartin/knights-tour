@@ -3,12 +3,19 @@
 
 CMakeFiles/knigths_tours.dir/Stack.cpp.o: ../Stack.cpp
 CMakeFiles/knigths_tours.dir/Stack.cpp.o: ../Stack.h
+CMakeFiles/knigths_tours.dir/Stack.cpp.o: ../State.h
+CMakeFiles/knigths_tours.dir/Stack.cpp.o: ../chess_board.h
 CMakeFiles/knigths_tours.dir/Stack.cpp.o: ../postion.h
+
+CMakeFiles/knigths_tours.dir/State.cpp.o: ../State.cpp
+CMakeFiles/knigths_tours.dir/State.cpp.o: ../State.h
+CMakeFiles/knigths_tours.dir/State.cpp.o: ../chess_board.h
+CMakeFiles/knigths_tours.dir/State.cpp.o: ../postion.h
 
 CMakeFiles/knigths_tours.dir/chess_board.cpp.o: ../chess_board.cpp
 CMakeFiles/knigths_tours.dir/chess_board.cpp.o: ../chess_board.h
 
-CMakeFiles/knigths_tours.dir/driver.cpp.o: ../Stack.h
+CMakeFiles/knigths_tours.dir/driver.cpp.o: ../State.h
 CMakeFiles/knigths_tours.dir/driver.cpp.o: ../chess_board.h
 CMakeFiles/knigths_tours.dir/driver.cpp.o: ../driver.cpp
 CMakeFiles/knigths_tours.dir/driver.cpp.o: ../postion.h
