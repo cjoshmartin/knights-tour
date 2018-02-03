@@ -25,12 +25,23 @@ int getDegree(int ** control_board, int row, int col)
     }
     return count;
 }
+
+bool neighbour(int x, int y, int xx, int yy)
+{
+    int i=0;
+    while(i++ < Max_Rows){
+        bool p1 = (x + p_moves_row[i]) == xx, p2 = (y + p_moves_col[i]) == yy,p3 = p1 && p2;
+        if (p3 == yy) return true;
+    }
+    return false;
+}
+
 bool next_move(int ** control_b, chess_board * board, int  *row, int *col){
 
     int min_deg_of_move = -1, c, min_deg_row = (Max_Rows + 1), next_row, next_col;
     int start;
-    start = rand() % *row;
-    for (int i = 0; i < Max_Rows; i++)
+    start = rand() % Max_Rows;
+    for (int i = 0; i < Max_Rows; ++i)
     {
         int starting_i = (start + i) % Max_Rows;
          next_row = *row + p_moves_row[starting_i];
@@ -41,24 +52,32 @@ bool next_move(int ** control_b, chess_board * board, int  *row, int *col){
             min_deg_of_move = starting_i;
             min_deg_row = c;
         }
-
-        if(min_deg_of_move == -1)
+    }
+    if(min_deg_of_move == -1)
         return false;
 
-        next_row = *row + p_moves_row[min_deg_of_move];
-        next_col = *col + p_moves_col[min_deg_of_move];
+    next_row = *row + p_moves_row[min_deg_of_move];
+    next_col = *col + p_moves_col[min_deg_of_move];
 
-        board->move(next_row,  next_col);
+    board->move(next_row,  next_col);
 
-        // TODO update to row and col
-        *row = next_row;
-        *col = next_col;
-
-        return true;
-    }
+    // TODO update to row and col
+    *row = next_row;
+    *col = next_col;
     return true;
 }
+bool tour(int** arr, chess_board * chess, postion current){
 
+    int row =current.row, col = current.col;
+    for(int i = 0; i< Max_Cols*Max_Rows-1; ++i)
+        if(next_move(arr,chess,&current.row,&current.col) == 0)
+            return false;
+
+    if(!neighbour(current.row,current.col, row, col)) // TODO don't understand
+        return false;
+
+    return true;
+}
 int main() {
     srand (time(NULL));
 
@@ -75,7 +94,9 @@ int main() {
     std::cin >> current.col;
 
     main_board->move(current.row,current.col);
-    main_board->printBoard();
+//    main_board->printBoard();
+
+    while(!tour(control_board,main_board,current)){}
 
     std::cout << std::endl;
     return 0;

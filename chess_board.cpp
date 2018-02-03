@@ -64,6 +64,7 @@ void chess_board::printBoard() {
 
 void chess_board::move(int row, int col) {
     _chessboard[row][col] = (_chessboard[row][col] == -1 ) ? 1 : ++_chessboard[row][col];
-
     printf("\n you have moved to (%c,%d)\n",65+(row),col);
+    this->printBoard();
+
 }
