@@ -1,3 +1,5 @@
+// C++ program to for Kinight's tour problem usin
+// Warnsdorff's algorithm
 #include <iostream>
 #include <stdio.h>
 #include "chess_board.h"
@@ -5,87 +7,147 @@
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
 
-#define Max_Rows 8
-#define Max_Cols  8
+#define N 8
 
-static int p_moves_row [Max_Rows] = {1,1,2,-2,-1,-1,-2,-2};
-static  int p_moves_col[Max_Cols] = {2,-2,1,-1,2,-2,1,-1};
+// Move pattern on basis of the change of
+// x coordinates and y coordinates respectively
+static int cx[N] = {1,1,2,2,-1,-1,-2,-2};
+static int cy[N] = {2,-2,1,-1,2,-2,1,-1};
 
-bool can_move(int row, int col, int ** control_board)
+// function restricts the knight to remain within
+// the 8x8 chessboard
+bool limits(int x, int y)
 {
-    return ((col >= 0 && row >=0 ) && (row < Max_Rows && col < Max_Cols) && ( control_board[row][col] < 0 ));
+    return ((x >= 0 && y >= 0) && (x < N && y < N));
 }
-int getDegree(int ** control_board, int row, int col)
+
+/* Checks whether a square is valid and empty or not */
+bool isempty(int a[N][N], int x, int y)
 {
-    int count =0;
-    for (int i =0; i < Max_Rows; i++)
-    {
-        if(can_move((row + p_moves_row[i]),(col + p_moves_col[i]),control_board))
+    return (limits(x, y)) && (a[x][y] < 0);
+}
+
+/* Returns the number of empty squares adjacent
+   to (x, y) */
+int getDegree(int a[N][N], int x, int y)
+{
+    int count = 0;
+    for (int i = 0; i < N; ++i)
+        if (isempty(a, (x + cx[i]), (y + cy[i])))
             count++;
-    }
+
     return count;
 }
 
+// Picks next point using Warnsdorff's heuristic.
+// Returns false if it is not possible to pick
+// next point.
+bool nextMove(int a[N][N], int *x, int *y)
+{
+    int min_deg_idx = -1, c, min_deg = (N+1), nx, ny;
+
+    // Try all N adjacent of (*x, *y) starting
+    // from a random adjacent. Find the adjacent
+    // with minimum degree.
+    int start = rand()%N;
+    for (int count = 0; count < N; ++count)
+    {
+        int i = (start + count)%N;
+        nx = *x + cx[i];
+        ny = *y + cy[i];
+        if ((isempty(a, nx, ny)) &&
+            (c = getDegree(a, nx, ny)) < min_deg)
+        {
+            min_deg_idx = i;
+            min_deg = c;
+        }
+    }
+
+    // IF we could not find a next cell
+    if (min_deg_idx == -1)
+        return false;
+
+    // Store coordinates of next point
+    nx = *x + cx[min_deg_idx];
+    ny = *y + cy[min_deg_idx];
+
+    // Mark next move
+//    a[ny*N + nx] = a[(*y)*N + (*x)]+1;
+    a[nx][ny] = a[(*x)][(*y)];
+
+    // Update next point
+    *x = nx;
+    *y = ny;
+
+    return true;
+}
+
+/* displays the chessboard with all the
+  legal knight's moves */
+void print(int a[N][N])
+{
+    for (int i = 0; i < N; ++i)
+    {
+        for (int j = 0; j < N; ++j)
+            printf("%d\t",a[i][j]);
+        printf("\n");
+    }
+}
+
+/* checks its neighbouring sqaures */
+/* If the knight ends on a square that is one
+   knight's move from the beginning square,
+   then tour is closed */
 bool neighbour(int x, int y, int xx, int yy)
 {
-    int i=0;
-    while(i++ < Max_Rows){
-        bool p1 = (x + p_moves_row[i]) == xx, p2 = (y + p_moves_col[i]) == yy,p3 = p1 && p2;
-        if (p3 == yy) return true;
-    }
+    for (int i = 0; i < N; ++i)
+        if (((x+cx[i]) == xx)&&((y + cy[i]) == yy))
+            return true;
+
     return false;
 }
 
-bool next_move(int ** control_b, chess_board * board, int  *row, int *col){
+/* Generates the legal moves using warnsdorff's
+  heuristics. Returns false if not possible */
+bool findClosedTour(int row, int col)
+{
+    // Filling up the chessboard matrix with -1's
+    int a[N][N];
+    for (int i = 0; i< N; ++i)
+        for (int j = 0; j < N; ++j)
+        a[i][j] = -1;
 
-    int min_deg_of_move = -1, c, min_deg_row = (Max_Rows + 1), next_row, next_col;
-    int start;
-    start = rand() % Max_Rows;
-    for (int i = 0; i < Max_Rows; ++i)
-    {
-        int starting_i = (start + i) % Max_Rows;
-         next_row = *row + p_moves_row[starting_i];
-         next_col = *col + p_moves_col[starting_i];
+    // Randome initial position
+    int sx = row;
+    int sy = col;
 
-        if(can_move(next_row,next_col,control_b) && (c = getDegree(control_b,next_row,next_col)) < min_deg_row)
-        {
-            min_deg_of_move = starting_i;
-            min_deg_row = c;
-        }
-    }
-    if(min_deg_of_move == -1)
-        return false;
+    // Current points are same as initial points
+    int x = sx, y = sy;
+    a[x][y] = 1; // Mark first move.
 
-    next_row = *row + p_moves_row[min_deg_of_move];
-    next_col = *col + p_moves_col[min_deg_of_move];
-
-    board->move(next_row,  next_col);
-
-    // TODO update to row and col
-    *row = next_row;
-    *col = next_col;
-    return true;
-}
-bool tour(int** arr, chess_board * chess, postion current){
-
-    int row =current.row, col = current.col;
-    for(int i = 0; i< Max_Cols*Max_Rows-1; ++i)
-        if(next_move(arr,chess,&current.row,&current.col) == 0)
+    // Keep picking next points using
+    // Warnsdorff's heuristic
+    for (int i = 0; i < N*N-1; ++i)
+        if (nextMove(a, &x, &y) == 0)
             return false;
 
-    if(!neighbour(current.row,current.col, row, col)) // TODO don't understand
+    // Check if tour is closed (Can end
+    // at starting point)
+    if (!neighbour(x, y, sx, sy))
         return false;
 
+    print(a);
     return true;
 }
-int main() {
-    srand (time(NULL));
 
+// Driver code
+int main()
+{
+    // To make sure that different random
+    // initial positions are picked.
+    srand(time(NULL));
     State * head = new State();
     postion current = head->current_position;
-
-    chess_board * main_board = new chess_board(Max_Rows,Max_Cols);
-    int ** control_board = main_board->getBoard();
 
     std::cout << "||| Enter the initial postion of the knight |||\n";
     std::cout << "||| Enter the row: ";
@@ -93,11 +155,12 @@ int main() {
     std::cout << "||| Enter the column: ";
     std::cin >> current.col;
 
-    main_board->move(current.row,current.col);
-//    main_board->printBoard();
 
-    while(!tour(control_board,main_board,current)){}
+    // While we don't get a solution
+    while (!findClosedTour(current.row,current.col))
+    {
+        ;
+    }
 
-    std::cout << std::endl;
     return 0;
 }
