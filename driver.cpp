@@ -19,23 +19,22 @@ int main()
     int ** the_board = board_controls->getBoard();
     Warnsdroffs * warnsdroff =  new Warnsdroffs(the_board);
     Stack<postion> * postion_stack = new Stack<postion>();
-    postion current ;
+
+    int row = 0, col =0;
 
     if(!debug) {
         std::cout << "||| Enter the initial position of the knight |||\n";
         std::cout << "||| Enter the row: ";
-        std::cin >> current->row;
+        std::cin >> row;
         std::cout << "||| Enter the column: ";
-        std::cin >> current->col;
+        std::cin >> col;
     }
-    if (debug){ current.row= 0; current.col = 0;}
+    if (debug){ row= 0; col = 0;}
 
-    postion_stack->push(&current);
-
-    the_board[current.row][current.col] = 1; // Mark first move.
+    board_controls->move(row,col);
 
     for(size_t i =0; i < 31; i++)
-        warnsdroff->nextMove(&current->row, &current->col);
+        warnsdroff->nextMove(&row, &col);
 
     board_controls->printBoard();
     return 0;

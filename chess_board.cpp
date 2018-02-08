@@ -69,6 +69,8 @@ void chess_board::move(int row, int col) {
     if(col >_col)
         throw std::invalid_argument("Invalid attempt set col");
 
+    _chessboard[row][col]= ++_number_of_moves;
+
     postion_stack->push(new postion(row,col));
 
 //    _chessboard[row][col] = (_chessboard[row][col] == -1 ) ? 1 : ++_chessboard[row][col];
