@@ -19,7 +19,7 @@ public:
 
     int get_col() const;
 
-    postion next = nullptr;
+    postion * next = nullptr;
 
 private:
     int _row,_col;
