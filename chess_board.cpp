@@ -51,11 +51,11 @@ void chess_board::printBoard() {
             else if(j==0)
                 ((i-1) < 0 )? printf("%2c%c ", 42,32) : printf("%2d| ", (i - 1)); // prints grid index
             else
-                if(_chessboard[i-1][j-1] == 1)
-                    printf("%2c ",42);
-                else if (_chessboard[i-1][j-1] >= 2)
-                    printf("%2c ",'X');
-                else
+//                if(_chessboard[i-1][j-1] == 1)
+//                    printf("%2c ",42);
+//                else if (_chessboard[i-1][j-1] >= 2)
+//                    printf("%2c ",'X');
+//                else
                 printf("%2d ", _chessboard[i-1][j-1]); // prints if postion has been visited
         }
         std::cout << std::endl;
@@ -64,6 +64,7 @@ void chess_board::printBoard() {
 
 void chess_board::move(int row, int col) {
     _chessboard[row][col] = (_chessboard[row][col] == -1 ) ? 1 : ++_chessboard[row][col];
-
     printf("\n you have moved to (%c,%d)\n",65+(row),col);
+    this->printBoard();
+
 }
