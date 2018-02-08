@@ -12,6 +12,9 @@
 #define KNIGTHS_TOURS_CHRESSBOARD_H
 
 
+#include "postion.h"
+#include "Stack.h"
+
 class chess_board {
 public:
     chess_board(int,int);
@@ -23,6 +26,8 @@ public:
 private:
     int ** _chessboard;
     int _row,_col;
+    int _number_of_moves;
+    Stack<postion> * postion_stack;
 };
 
 
