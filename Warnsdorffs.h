@@ -16,16 +16,14 @@
 class Warnsdroffs {
 public:
     Warnsdroffs(int *);
-    bool findClosedTour(postion *current);
-
+    bool nextMove(int *x, int *y);
+    void print();
 private:
     int * arr;
     static const int  N = 8;
 
 
     int getDegree( int x, int y);
-    void print();
-    bool nextMove(int *x, int *y);
     bool isempty( int x, int y);
     bool limits(int x, int y);
 };

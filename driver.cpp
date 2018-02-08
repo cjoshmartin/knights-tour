@@ -32,11 +32,11 @@ int main()
     if (debug){ current->row= 0; current->col = 0;}
 
 
-    // While we don't get a solution
-    while (warnsdroff->findClosedTour(current))
-    {
-        ;
-    }
+    tacos[current->col*8+current->row] = 1; // Mark first move.
 
+    for(size_t i =0; i < 31; i++)
+        warnsdroff->nextMove(&current->row, &current->col);
+
+    warnsdroff->print();
     return 0;
 }

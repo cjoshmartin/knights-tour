@@ -101,21 +101,4 @@ void Warnsdroffs::print()
     }
 }
 
-/* Generates the legal moves using warnsdorff's
-  heuristics. Returns false if not possible */
-bool Warnsdroffs::findClosedTour(postion * current)
-{
-
-    // Current points are same as initial points
-    arr[current->col*N+current->row] = 1; // Mark first move.
-
-    // Keep picking next points using
-    // Warnsdorff's heuristic
-    for (int i = 0; i < 31; ++i)
-        if (this->nextMove(&current->row, &current->col) == 0)
-            return true;
-
-    this->print();
-    return false;
-}
 
