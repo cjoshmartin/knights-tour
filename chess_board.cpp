@@ -11,7 +11,7 @@
 #include <iostream>
 #include "chess_board.h"
 
-chess_board::chess_board(int rows, int col) : _chessboard(0), _row(rows),_col(col) {
+chess_board::chess_board(int rows, int col) : _chessboard(0), _row(rows),_col(col), _number_of_moves(0) {
 
     _chessboard = new int*[rows];
 
@@ -23,7 +23,7 @@ chess_board::chess_board(int rows, int col) : _chessboard(0), _row(rows),_col(co
         }
     }
 
-    postion_stack = new Stack();
+    _postion_stack = new Stack();
 }
 
 chess_board::~chess_board(void) {
@@ -35,6 +35,10 @@ chess_board::~chess_board(void) {
 
 }
 
+
+size_t chess_board::number_of_moves(){
+    return _number_of_moves;
+}
 int **chess_board::getBoard() {
     return _chessboard;
 }
@@ -55,7 +59,7 @@ void chess_board::printBoard() {
 //                else if (_chessboard[i-1][j-1] >= 2)
 //                    printf("%2c ",'X');
 //                else
-                printf("%2d ", _chessboard[i-1][j-1]); // prints if postion has been visited
+                printf("%2d ", _chessboard[i-1][j-1]); // prints if position has been visited
         }
         std::cout << std::endl;
     }
@@ -71,10 +75,20 @@ void chess_board::move(int row, int col) {
 
     _chessboard[row][col]= ++_number_of_moves;
 
-    postion_stack->push(new postion(row,col));
+    _postion_stack->push(new postion(row,col));
 
 //    _chessboard[row][col] = (_chessboard[row][col] == -1 ) ? 1 : ++_chessboard[row][col];
     printf("\n you have moved to (%c,%d)\n",65+(row),col);
-    this->printBoard();
 
+}
+
+void chess_board::backtrack() {
+    postion * to_remove = _postion_stack->top();
+    --_number_of_moves;
+    _chessboard[to_remove->get_row()][to_remove->get_col()] = -1;
+    _postion_stack->pop();
+}
+
+postion chess_board::current_position() {
+    return *_postion_stack->top();
 }

@@ -18,8 +18,6 @@ int main()
     chess_board * board_controls = new chess_board(n,n);
     int ** the_board = board_controls->getBoard();
     Warnsdroffs * warnsdroff =  new Warnsdroffs(the_board);
-    Stack * postion_stack = new Stack();
-
     int row = 0, col =0;
 
     if(!debug) {
@@ -33,8 +31,8 @@ int main()
 
     board_controls->move(row,col);
 
-    for(size_t i =0; i < 31; i++)
-        warnsdroff->nextMove(&row, &col);
+    while(board_controls->number_of_moves() < 32)
+        warnsdroff->nextMove(board_controls);
 
     board_controls->printBoard();
     return 0;

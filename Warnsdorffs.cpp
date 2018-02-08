@@ -12,6 +12,7 @@
 #include <cstdlib>
 #include <iostream>
 #include "Warnsdorffs.h"
+#include "chess_board.h"
 
 
 static int cx[8] = {1,1,2,2,-1,-1,-2,-2};
@@ -40,23 +41,23 @@ int Warnsdroffs::getDegree( int x, int y)
 // Picks next point using Warnsdorff's heuristic.
 // Returns false if it is not possible to pick
 // next point.
-bool Warnsdroffs::nextMove( int *x, int *y)
-{
-    int min_deg_idx = -1, c, min_deg = (N+1), nx, ny;
+void Warnsdroffs::nextMove(chess_board * board) {
+    int min_deg_idx = -1, c, min_deg = (N + 1), nx, ny;
 
     // Try all N adjacent of (*x, *y) starting
     // from a random adjacent. Find the adjacent
     // with minimum degree.
-    int start = rand()%N;
+    int start = rand() % N;
 
-    for (int count = 0; count < N; ++count)
-    {
-        int i = (start + count)%N;
-        nx = *x + cx[i];
-        ny = *y + cy[i];
+    int x = board->current_position().get_row();
+    int y = board->current_position().get_col();
+
+    for (int count = 0; count < N; ++count) {
+        int i = (start + count) % N;
+        nx = x + cx[i];
+        ny = y + cy[i];
         if ((isempty(nx, ny)) &&
-            (c = getDegree(nx, ny)) < min_deg)
-        {
+            (c = getDegree(nx, ny)) < min_deg) {
             min_deg_idx = i;
             min_deg = c;
         }
@@ -64,19 +65,15 @@ bool Warnsdroffs::nextMove( int *x, int *y)
 
     // IF we could not find a next cell
     if (min_deg_idx == -1)
-        return false;
+        board->backtrack();
+    else {
 
-    // Store coordinates of next point
-    nx = *x + cx[min_deg_idx];
-    ny = *y + cy[min_deg_idx];
+        // Store coordinates of next point
+        nx = x + cx[min_deg_idx];
+        ny = y + cy[min_deg_idx];
 
-    // Mark next move
-    arr[nx][ny] = arr[(*x)][(*y)]+1;
+        // Update next point
+        board->move(nx, ny);
+    }
 
-    // Update next point
-    *x = nx;
-    *y = ny;
-
-    return true;
 }
-

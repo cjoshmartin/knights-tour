@@ -19,7 +19,10 @@ class chess_board {
 public:
     chess_board(int,int);
     ~chess_board(void);
+    size_t number_of_moves();
     int ** getBoard(void);
+    void backtrack();
+    postion current_position();
     void move(int row, int col);
     void printBoard();
 
@@ -27,7 +30,7 @@ private:
     int ** _chessboard;
     int _row,_col;
     int _number_of_moves;
-    Stack * postion_stack;
+    Stack * _postion_stack;
 };
 
 

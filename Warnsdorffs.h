@@ -12,11 +12,13 @@
 #define KNIGTHS_TOURS_WARNSDORFFS_H
 
 #include "postion.h"
+#include "chess_board.h"
 
 class Warnsdroffs {
 public:
     Warnsdroffs(int **);
-    bool nextMove(int *x, int *y);
+
+    void nextMove(chess_board * board);
 private:
     int ** arr;
     static const int  N = 8;
