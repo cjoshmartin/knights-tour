@@ -15,17 +15,14 @@
 
 class Warnsdroffs {
 public:
-    Warnsdroffs(int *);
+    Warnsdroffs(int **);
     bool nextMove(int *x, int *y);
-    void print();
 private:
-    int * arr;
+    int ** arr;
     static const int  N = 8;
-
 
     int getDegree( int x, int y);
     bool isempty( int x, int y);
-    bool limits(int x, int y);
 };
 
 #endif //KNIGTHS_TOURS_WARNSDORFFS_H

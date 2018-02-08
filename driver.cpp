@@ -6,6 +6,7 @@
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
 
+#define  n 8
 // Driver code
 int main()
 {
@@ -14,12 +15,11 @@ int main()
     // initial positions are picked.
     srand(time(NULL));
     State * head = new State();
-    int tacos[64];
-    // Filling up the chessboard matrix with -1's
-    for (int i = 0; i< 64; ++i)
-        tacos[i] = -1;
 
-    Warnsdroffs * warnsdroff =  new Warnsdroffs(tacos);
+    chess_board * board_controls = new chess_board(n,n);
+    int ** the_board = board_controls->getBoard();
+
+    Warnsdroffs * warnsdroff =  new Warnsdroffs(the_board);
     postion * current = &head->current_position;
 
     if(!debug) {
@@ -32,11 +32,11 @@ int main()
     if (debug){ current->row= 0; current->col = 0;}
 
 
-    tacos[current->col*8+current->row] = 1; // Mark first move.
+    the_board[current->row][current->col] = 1; // Mark first move.
 
     for(size_t i =0; i < 31; i++)
         warnsdroff->nextMove(&current->row, &current->col);
 
-    warnsdroff->print();
+    board_controls->printBoard();
     return 0;
 }

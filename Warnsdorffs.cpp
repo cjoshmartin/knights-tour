@@ -18,21 +18,12 @@ static int cx[8] = {1,1,2,2,-1,-1,-2,-2};
 static int cy[8] = {2,-2,1,-1,2,-2,1,-1};
 
 
-Warnsdroffs::Warnsdroffs(int * array): arr(array){}
-// Move pattern on basis of the change of
-// x coordinates and y coordinates respectively
-
-// function restricts the knight to remain within
-// the 8x8 chessboard
-bool Warnsdroffs::limits(int x, int y)
-{
-    return ((x >= 0 && y >= 0) && (x < N && y < N));
-}
+Warnsdroffs::Warnsdroffs(int ** array): arr(array){}
 
 /* Checks whether a square is valid and empty or not */
 bool Warnsdroffs::isempty( int x, int y)
 {
-    return (limits(x, y)) && (arr[y*N+x] < 0);
+    return (x >= 0 && y >= 0) && (x < N && y < N) && (arr[x][y] < 0);
 }
 
 /* Returns the number of empty squares adjacent
@@ -40,10 +31,9 @@ bool Warnsdroffs::isempty( int x, int y)
 int Warnsdroffs::getDegree( int x, int y)
 {
     int count = 0;
-    for (int i = 0; i < this->N; ++i)
+    for (int i = 0; i < N; ++i)
         if (isempty((x + cx[i]), (y + cy[i])))
             count++;
-//    std::cout << "number of adjacent: " << count << std::endl;
     return count;
 }
 
@@ -58,6 +48,7 @@ bool Warnsdroffs::nextMove( int *x, int *y)
     // from a random adjacent. Find the adjacent
     // with minimum degree.
     int start = rand()%N;
+
     for (int count = 0; count < N; ++count)
     {
         int i = (start + count)%N;
@@ -80,7 +71,7 @@ bool Warnsdroffs::nextMove( int *x, int *y)
     ny = *y + cy[min_deg_idx];
 
     // Mark next move
-    arr[ny*N + nx] = arr[(*y)*N + (*x)]+1;
+    arr[nx][ny] = arr[(*x)][(*y)]+1;
 
     // Update next point
     *x = nx;
@@ -88,17 +79,4 @@ bool Warnsdroffs::nextMove( int *x, int *y)
 
     return true;
 }
-
-/* displays the chessboard with all the
-  legal knight's moves */
-void Warnsdroffs::print()
-{
-    for (int i = 0; i < N; ++i)
-    {
-        for (int j = 0; j < N; ++j)
-            printf("%d\t",arr[j*N+i]);
-        printf("\n");
-    }
-}
-
 
