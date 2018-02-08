@@ -27,7 +27,7 @@ private:
     int ** _chessboard;
     int _row,_col;
     int _number_of_moves;
-    Stack<postion> * postion_stack;
+    Stack * postion_stack;
 };
 
 

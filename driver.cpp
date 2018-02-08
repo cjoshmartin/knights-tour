@@ -18,7 +18,7 @@ int main()
     chess_board * board_controls = new chess_board(n,n);
     int ** the_board = board_controls->getBoard();
     Warnsdroffs * warnsdroff =  new Warnsdroffs(the_board);
-    Stack<postion> * postion_stack = new Stack<postion>();
+    Stack * postion_stack = new Stack();
 
     int row = 0, col =0;
 

@@ -8,63 +8,56 @@
 
 //
 
+// NOTE: T <==> postion class
+
 #include "Stack.h"
 
 Stack::Stack(): _size(0) {
 
 }
 
-template<typename T>
-Stack<T>::Stack(T *item): _size(1), _head(item) {}
+Stack::Stack(postion *item): _size(1), _head(item) {}
 
 Stack::~Stack() {
     clear();
 }
 
-template<typename T>
-void Stack<T>::pop() {
+void Stack::pop() {
 
     if (is_empty())
         throw Stack::empty_exception();
 
-    T * to_remove = _head;
-    T * will_be_head = _head->next;
+    postion * to_remove = _head;
+    postion * will_be_head = _head->next;
 
     delete to_remove;
     _head = will_be_head;
-    _size--;
-
-    if (_size < 0)
-        _size = 0;
+    if(_size > 0)
+        _size--;
 }
 
-template<typename T>
-T Stack<T>::top() {
+postion * Stack::top() {
 
     return this->_head;
 }
 
-template<typename T>
-void Stack<T>::push(T * item) {
+void Stack::push(postion * item) {
     item->next = _head;
     _head = item;
     _size++;
 }
 
-template<typename T>
-bool Stack<T>::is_empty(void) const {
+bool Stack::is_empty(void) const {
 
     return this->_size == 0;
 }
 
-template<typename T>
-size_t Stack<T>::size(void) const {
+size_t Stack::size(void) const {
 
     return this->_size;
 }
 
-template<typename T>
-void Stack<T>::clear(void) {
+void Stack::clear(void) {
 
     for (int i = 0; i < _size; ++i) {
         pop();

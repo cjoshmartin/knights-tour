@@ -23,7 +23,7 @@ chess_board::chess_board(int rows, int col) : _chessboard(0), _row(rows),_col(co
         }
     }
 
-    postion_stack = new Stack<postion>();
+    postion_stack = new Stack();
 }
 
 chess_board::~chess_board(void) {

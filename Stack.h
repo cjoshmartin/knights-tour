@@ -15,10 +15,8 @@
 #include <exception>
 #include "postion.h"
 
-template <typename T>
 class Stack {
 public:
-    typedef T type;
 
     /**
      * @class empty_exception
@@ -36,18 +34,18 @@ public:
     };
 
     Stack();
-    Stack(T * item);
+    Stack(postion * item);
     virtual ~Stack();
     void pop();
-    T top();
-    void push(T * item);
+    postion * top();
+    void push(postion * item);
 
     bool is_empty (void) const;
     size_t size (void) const;
     void clear (void);
 
 private:
-    T * _head;
+    postion * _head;
     size_t _size;
 };
 

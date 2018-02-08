@@ -3,4 +3,4 @@ project(knigths_tours)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(knigths_tours driver.cpp chess_board.cpp chess_board.h postion.h Warnsdorffs.cpp Warnsdorffs.h postion.cpp)
+add_executable(knigths_tours driver.cpp chess_board.cpp chess_board.h postion.h Stack.cpp Stack.h Warnsdorffs.cpp Warnsdorffs.h postion.cpp)
