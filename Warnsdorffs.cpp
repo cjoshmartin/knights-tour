@@ -18,9 +18,7 @@ static int cx[8] = {1,1,2,2,-1,-1,-2,-2};
 static int cy[8] = {2,-2,1,-1,2,-2,1,-1};
 
 
-Warnsdroffs::Warnsdroffs(int * array): arr(array){
-
-}
+Warnsdroffs::Warnsdroffs(int * array): arr(array){}
 // Move pattern on basis of the change of
 // x coordinates and y coordinates respectively
 
@@ -32,18 +30,18 @@ bool Warnsdroffs::limits(int x, int y)
 }
 
 /* Checks whether a square is valid and empty or not */
-bool Warnsdroffs::isempty(int a[], int x, int y)
+bool Warnsdroffs::isempty( int x, int y)
 {
-    return (limits(x, y)) && (a[y*N+x] < 0);
+    return (limits(x, y)) && (arr[y*N+x] < 0);
 }
 
 /* Returns the number of empty squares adjacent
    to (x, y) */
-int Warnsdroffs::getDegree(int a[], int x, int y)
+int Warnsdroffs::getDegree( int x, int y)
 {
     int count = 0;
     for (int i = 0; i < this->N; ++i)
-        if (isempty(a, (x + cx[i]), (y + cy[i])))
+        if (isempty((x + cx[i]), (y + cy[i])))
             count++;
 //    std::cout << "number of adjacent: " << count << std::endl;
     return count;
@@ -52,7 +50,7 @@ int Warnsdroffs::getDegree(int a[], int x, int y)
 // Picks next point using Warnsdorff's heuristic.
 // Returns false if it is not possible to pick
 // next point.
-bool Warnsdroffs::nextMove(int a[], int *x, int *y)
+bool Warnsdroffs::nextMove( int *x, int *y)
 {
     int min_deg_idx = -1, c, min_deg = (N+1), nx, ny;
 
@@ -65,8 +63,8 @@ bool Warnsdroffs::nextMove(int a[], int *x, int *y)
         int i = (start + count)%N;
         nx = *x + cx[i];
         ny = *y + cy[i];
-        if ((isempty(a, nx, ny)) &&
-            (c = getDegree(a, nx, ny)) < min_deg)
+        if ((isempty(nx, ny)) &&
+            (c = getDegree(nx, ny)) < min_deg)
         {
             min_deg_idx = i;
             min_deg = c;
@@ -82,7 +80,7 @@ bool Warnsdroffs::nextMove(int a[], int *x, int *y)
     ny = *y + cy[min_deg_idx];
 
     // Mark next move
-    a[ny*N + nx] = a[(*y)*N + (*x)]+1;
+    arr[ny*N + nx] = arr[(*y)*N + (*x)]+1;
 
     // Update next point
     *x = nx;
@@ -93,12 +91,12 @@ bool Warnsdroffs::nextMove(int a[], int *x, int *y)
 
 /* displays the chessboard with all the
   legal knight's moves */
-void Warnsdroffs::print(int a[])
+void Warnsdroffs::print()
 {
     for (int i = 0; i < N; ++i)
     {
         for (int j = 0; j < N; ++j)
-            printf("%d\t",a[j*N+i]);
+            printf("%d\t",arr[j*N+i]);
         printf("\n");
     }
 }
@@ -107,26 +105,17 @@ void Warnsdroffs::print(int a[])
   heuristics. Returns false if not possible */
 bool Warnsdroffs::findClosedTour(postion * current)
 {
-    // Filling up the chessboard matrix with -1's
-    int a[N*N];
-    for (int i = 0; i< N*N; ++i)
-        a[i] = -1;
-
-    // Randome initial position
-    int sx = current->row;
-    int sy = current->col;
 
     // Current points are same as initial points
-    int x = sx, y = sy;
-    a[y*N+x] = 1; // Mark first move.
+    arr[current->col*N+current->row] = 1; // Mark first move.
 
     // Keep picking next points using
     // Warnsdorff's heuristic
     for (int i = 0; i < 31; ++i)
-        if (nextMove(a, &x, &y) == 0)
+        if (this->nextMove(&current->row, &current->col) == 0)
             return true;
 
-    print(a);
+    this->print();
     return false;
 }
 

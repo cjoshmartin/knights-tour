@@ -23,10 +23,10 @@ private:
     static const int  N = 8;
 
 
-    int getDegree(int a[], int x, int y);
-    void print(int a[]);
-    bool nextMove(int a[], int *x, int *y);
-    bool isempty(int a[], int x, int y);
+    int getDegree( int x, int y);
+    void print();
+    bool nextMove(int *x, int *y);
+    bool isempty( int x, int y);
     bool limits(int x, int y);
 };
 

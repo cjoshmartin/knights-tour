@@ -14,7 +14,11 @@ int main()
     // initial positions are picked.
     srand(time(NULL));
     State * head = new State();
-    int tacos[8];
+    int tacos[64];
+    // Filling up the chessboard matrix with -1's
+    for (int i = 0; i< 64; ++i)
+        tacos[i] = -1;
+
     Warnsdroffs * warnsdroff =  new Warnsdroffs(tacos);
     postion * current = &head->current_position;
 
