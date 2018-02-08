@@ -12,17 +12,43 @@
 #define KNIGTHS_TOURS_STACK_H
 
 
-#include "State.h"
+#include <exception>
+#include "postion.h"
 
+template <typename T>
 class Stack {
 public:
+    typedef T type;
+
+    /**
+     * @class empty_exception
+     *
+     * Exception thrown to indicate the stack is empty.
+     */
+    class empty_exception : public std::exception
+    {
+    public:
+        /// Default constructor.
+        empty_exception (void)
+                : std::exception () {
+        }
+
+    };
+
     Stack();
+    Stack(T * item);
     virtual ~Stack();
     void pop();
-    State top();
+    T top();
+    void push(T * item);
+
+    bool is_empty (void) const;
+    size_t size (void) const;
+    void clear (void);
 
 private:
-    State * currentState;
+    T * _head;
+    size_t _size;
 };
 
 

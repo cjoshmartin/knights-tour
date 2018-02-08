@@ -11,10 +11,7 @@
 #include <iostream>
 #include "chess_board.h"
 
-chess_board::chess_board(int rows, int col) {
-
-    _row = rows;
-    _col = col;
+chess_board::chess_board(int rows, int col) : _chessboard(0), _row(rows),_col(col) {
 
     _chessboard = new int*[rows];
 
@@ -25,6 +22,8 @@ chess_board::chess_board(int rows, int col) {
             _chessboard[i][j] = -1; // setting the init value
         }
     }
+
+    postion_stack = new Stack<postion>();
 }
 
 chess_board::~chess_board(void) {
@@ -63,7 +62,16 @@ void chess_board::printBoard() {
 }
 
 void chess_board::move(int row, int col) {
-    _chessboard[row][col] = (_chessboard[row][col] == -1 ) ? 1 : ++_chessboard[row][col];
+
+    if(row >_row)
+        throw std::invalid_argument("Invalid attempt set row");
+
+    if(col >_col)
+        throw std::invalid_argument("Invalid attempt set col");
+
+    postion_stack->push(new postion(row,col));
+
+//    _chessboard[row][col] = (_chessboard[row][col] == -1 ) ? 1 : ++_chessboard[row][col];
     printf("\n you have moved to (%c,%d)\n",65+(row),col);
     this->printBoard();
 
