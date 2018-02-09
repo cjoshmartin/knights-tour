@@ -39,6 +39,7 @@ chess_board::~chess_board(void) {
 size_t chess_board::number_of_moves(){
     return _number_of_moves;
 }
+
 int **chess_board::getBoard() const {
     return _chessboard;
 }
@@ -67,10 +68,10 @@ void chess_board::printBoard() {
 
 void chess_board::move(int row, int col, int pre_postion_index) {
 
-    if(row >_row)
+    if(row >_row && row  < 0)
         throw std::invalid_argument("Invalid attempt set row");
 
-    if(col >_col)
+    if(col >_col && col < 0)
         throw std::invalid_argument("Invalid attempt set col");
 
     if (_postion_stack->size() > 0)
@@ -97,3 +98,4 @@ void chess_board::backtrack() {
 postion chess_board::current_position() {
     return *_postion_stack->top();
 }
+

@@ -19,14 +19,16 @@ public:
 
     Algorthims(int **arr,chess_board * board_contols );
 
+    virtual void algorthim(void)=0;
+
 protected:
 
     int ** arr;
     chess_board * board_controls;
-    static const int  N = 8;
+    static const int  Max_Number_alg = 8;
 
-    static int cx[8] = {1,1,2,2,-1,-1,-2,-2};
-    static int cy[8] = {2,-2,1,-1,2,-2,1,-1};
+    int cx[8];
+    int cy[8];
 
     bool isEmpty(int x, int y);
 };

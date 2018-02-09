@@ -28,3 +28,7 @@ void postion::set_position_index(int position_index) {
 
     _position_index = position_index;
 }
+
+int postion::get_position_index() const {
+    return _position_index;
+}

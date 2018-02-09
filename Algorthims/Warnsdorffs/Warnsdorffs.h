@@ -19,7 +19,7 @@ class Warnsdroffs : Algorthims {
 public:
     Warnsdroffs(int **, chess_board *);
 
-    void nextMove();
+    void algorthim();
 private:
 
     int getDegree( int x, int y);

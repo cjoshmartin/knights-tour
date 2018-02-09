@@ -1,6 +1,7 @@
 #include <iostream>
 #include "chess_board/chess_board.h"
 #include "Algorthims/Warnsdorffs/Warnsdorffs.h"
+#include "Algorthims/DepthFirst/DepthFirst.h"
 
 #define  n 8
 
@@ -22,13 +23,12 @@ void testing(){
 
 
     chess_board * board_controls = new chess_board(n,n);
-    int ** the_board = board_controls->getBoard();
-    Warnsdroffs * warnsdroff =  new Warnsdroffs(the_board);
+    Warnsdroffs * warnsdroff =  new Warnsdroffs(board_controls->getBoard(),board_controls);
 
     first_move(board_controls,false);
 
     while(board_controls->number_of_moves() < 32)
-        warnsdroff->nextMove(board_controls);
+        warnsdroff->algorthim();
 
     board_controls->printBoard();
 
@@ -43,18 +43,20 @@ int main()
 {
     bool debug = true;
 
-    chess_board * board_controls = new chess_board(n,n);
-    int ** the_board = board_controls->getBoard();
-    Warnsdroffs * warnsdroff =  new Warnsdroffs(the_board);
+    chess_board * board_controls =     new chess_board(n,n);
+
+    Warnsdroffs * warnsdroff     =     new Warnsdroffs(board_controls->getBoard(),board_controls);
+    DepthFirst  * depthfirst     =     new DepthFirst(board_controls->getBoard(),board_controls);
 
     first_move(board_controls,debug);
 
 do {
     while (board_controls->number_of_moves() < 32)
-        warnsdroff->nextMove(board_controls);
+        warnsdroff->algorthim();
 
     while(board_controls->number_of_moves() >= 32 & board_controls->number_of_moves() < 63)
-        ;
+       depthfirst->algorthim();
+
 }while (board_controls->number_of_moves() < 63);
 
     board_controls->printBoard();

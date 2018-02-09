@@ -21,6 +21,8 @@ public:
 
     void set_position_index(int _position_index);
 
+    int get_position_index() const;
+
     postion * next = nullptr;
 
 private:
