@@ -23,18 +23,18 @@ void DepthFirst::algorthim(void) {
     int col = this->board_controls->current_position().get_col();
     int i =0, next_index = -1;
     postion current = board_controls->current_position();
-
+    bool should_look =true;
     if (current.get_position_index() > -1)
         i=current.get_position_index() + 1 ;
 
     if (i > 8)
-        i=0;
+    should_look =false;
 
-    while(i++ < this->Max_Number_alg && next_index == -1) {
+    while(i++ < this->Max_Number_alg && next_index == -1 && should_look) {
         int nextrow = row + this->cx[i];
         int nextcol = col + this->cy[i];
 
-        if(this->isEmpty(nextrow,nextcol) && nextcol > 0 && nextrow > 0)
+        if(this->isEmpty(nextrow,nextcol))
             next_index = i;
     }
 

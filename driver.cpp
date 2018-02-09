@@ -54,10 +54,10 @@ do {
     while (board_controls->number_of_moves() < 32)
         warnsdroff->algorthim();
 
-    while(board_controls->number_of_moves() >= 32 & board_controls->number_of_moves() < 63)
+    while(board_controls->number_of_moves() >= 32 & board_controls->number_of_moves() < 64)
        depthfirst->algorthim();
 
-}while (board_controls->number_of_moves() < 63);
+}while (board_controls->number_of_moves() < 64);
 
     board_controls->printBoard();
     return 0;
