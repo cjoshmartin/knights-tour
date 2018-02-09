@@ -26,5 +26,5 @@ void postion::set_position_index(int position_index) {
     if (position_index  < 0)
         throw  std::invalid_argument("Invalid attempt set position index");
 
-    postion::_position_index = position_index;
+    _position_index = position_index;
 }

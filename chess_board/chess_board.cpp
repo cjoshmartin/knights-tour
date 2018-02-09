@@ -39,7 +39,7 @@ chess_board::~chess_board(void) {
 size_t chess_board::number_of_moves(){
     return _number_of_moves;
 }
-int **chess_board::getBoard() {
+int **chess_board::getBoard() const {
     return _chessboard;
 }
 
@@ -73,7 +73,7 @@ void chess_board::move(int row, int col, int pre_postion_index) {
     if(col >_col)
         throw std::invalid_argument("Invalid attempt set col");
 
-
+    if (_postion_stack->size() > 0)
     _postion_stack->top()->set_position_index(pre_postion_index);  // set the index of the point on top, so that if I need to comeback I don't need to check all points
 
     _chessboard[row][col]= ++_number_of_moves; // will count the numbers of moves and set that to the positon in the array

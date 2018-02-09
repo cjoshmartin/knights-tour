@@ -13,18 +13,16 @@
 
 #include "../../utils/postion/postion.h"
 #include "../../chess_board/chess_board.h"
+#include "../Algorthims.h"
 
-class Warnsdroffs {
+class Warnsdroffs : Algorthims {
 public:
-    Warnsdroffs(int **);
+    Warnsdroffs(int **, chess_board *);
 
-    void nextMove(chess_board * board);
+    void nextMove();
 private:
-    int ** arr;
-    static const int  N = 8;
 
     int getDegree( int x, int y);
-    bool isempty( int x, int y);
 };
 
 #endif //KNIGTHS_TOURS_WARNSDORFFS_H

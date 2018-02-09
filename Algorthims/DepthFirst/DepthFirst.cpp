@@ -9,3 +9,16 @@
 //
 
 #include "DepthFirst.h"
+
+
+DepthFirst::DepthFirst(int ** arr,chess_board * board_controls):Algorthims(arr,board_controls) {}
+
+DepthFirst::~DepthFirst() {
+
+}
+
+void DepthFirst::algorithm(void) {
+
+}
+
+

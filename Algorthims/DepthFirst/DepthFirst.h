@@ -12,8 +12,15 @@
 #define KNIGTHS_TOURS_DEPTHFIRST_H
 
 
-class DepthFirst {
+#include "../Algorthims.h"
 
+class DepthFirst: Algorthims {
+public:
+
+    DepthFirst(int **arr, chess_board *);
+
+    virtual ~DepthFirst();
+    void algorithm(void);
 };
 
 
