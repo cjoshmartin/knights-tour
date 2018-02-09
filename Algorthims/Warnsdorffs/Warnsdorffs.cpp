@@ -8,11 +8,8 @@
 
 //
 
-#include <cstdio>
 #include <cstdlib>
-#include <iostream>
 #include "Warnsdorffs.h"
-#include "chess_board.h"
 
 
 static int cx[8] = {1,1,2,2,-1,-1,-2,-2};
@@ -56,8 +53,7 @@ void Warnsdroffs::nextMove(chess_board * board) {
         int i = (start + count) % N;
         nx = x + cx[i];
         ny = y + cy[i];
-        if ((isempty(nx, ny)) &&
-            (c = getDegree(nx, ny)) < min_deg) {
+        if ((isempty(nx, ny)) && (c = getDegree(nx, ny)) < min_deg) {
             min_deg_idx = i;
             min_deg = c;
         }
@@ -68,12 +64,9 @@ void Warnsdroffs::nextMove(chess_board * board) {
         board->backtrack();
     else {
 
-        // Store coordinates of next point
-        nx = x + cx[min_deg_idx];
-        ny = y + cy[min_deg_idx];
+        //TODO: SAVE POSTION OF I
 
-        // Update next point
-        board->move(nx, ny);
+        board->move(x + cx[min_deg_idx], y + cy[min_deg_idx],min_deg_idx);
     }
 
 }

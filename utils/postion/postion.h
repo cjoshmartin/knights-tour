@@ -19,9 +19,12 @@ public:
 
     int get_col() const;
 
+    void set_position_index(int _position_index);
+
     postion * next = nullptr;
 
 private:
     int _row,_col;
+    int _position_index;
 };
 #endif //KNIGTHS_TOURS_POSTION_H

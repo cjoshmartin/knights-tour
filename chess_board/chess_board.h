@@ -12,8 +12,8 @@
 #define KNIGTHS_TOURS_CHRESSBOARD_H
 
 
-#include "postion.h"
-#include "Stack.h"
+#include "../utils/postion/postion.h"
+#include "../utils/Stack/Stack.h"
 
 class chess_board {
 public:
@@ -23,7 +23,7 @@ public:
     int ** getBoard(void);
     void backtrack();
     postion current_position();
-    void move(int row, int col);
+    void move(int row, int col, int pre_postion_index);
     void printBoard();
 
 private:

@@ -11,8 +11,8 @@
 #ifndef KNIGTHS_TOURS_WARNSDORFFS_H
 #define KNIGTHS_TOURS_WARNSDORFFS_H
 
-#include "postion.h"
-#include "chess_board.h"
+#include "../../utils/postion/postion.h"
+#include "../../chess_board/chess_board.h"
 
 class Warnsdroffs {
 public:

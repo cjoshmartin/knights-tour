@@ -1,12 +1,34 @@
 #include <iostream>
 #include <stdio.h>
-#include "chess_board.h"
-#include "Warnsdorffs.h"
-#include "Stack.h"
+#include "chess_board/chess_board.h"
+#include "Algorthims/Warnsdorffs/Warnsdorffs.h"
+#include "utils/Stack/Stack.h"
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
 
 #define  n 8
+
+void testing(){
+
+
+    chess_board * board_controls = new chess_board(n,n);
+    int ** the_board = board_controls->getBoard();
+    Warnsdroffs * warnsdroff =  new Warnsdroffs(the_board);
+    int row = 0, col =0;
+
+    board_controls->move(row,col);
+
+    while(board_controls->number_of_moves() < 32)
+        warnsdroff->nextMove(board_controls);
+
+    board_controls->printBoard();
+
+    while(board_controls->number_of_moves() > 1)
+        board_controls->backtrack();
+
+    board_controls->printBoard();
+}
+
 // Driver code
 int main()
 {
@@ -27,7 +49,6 @@ int main()
         std::cout << "||| Enter the column: ";
         std::cin >> col;
     }
-    if (debug){ row= 0; col = 0;}
 
     board_controls->move(row,col);
 
@@ -35,5 +56,6 @@ int main()
         warnsdroff->nextMove(board_controls);
 
     board_controls->printBoard();
+
     return 0;
 }

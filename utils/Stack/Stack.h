@@ -13,7 +13,7 @@
 
 
 #include <exception>
-#include "postion.h"
+#include "../postion/postion.h"
 
 class Stack {
 public:

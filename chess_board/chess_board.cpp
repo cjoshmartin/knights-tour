@@ -11,7 +11,7 @@
 #include <iostream>
 #include "chess_board.h"
 
-chess_board::chess_board(int rows, int col) : _chessboard(0), _row(rows),_col(col), _number_of_moves(0) {
+chess_board::chess_board(int rows, int col) : _chessboard(0), _row(rows),_col(col), _number_of_moves(0)  {
 
     _chessboard = new int*[rows];
 
@@ -65,7 +65,7 @@ void chess_board::printBoard() {
     }
 }
 
-void chess_board::move(int row, int col) {
+void chess_board::move(int row, int col, int pre_postion_index) {
 
     if(row >_row)
         throw std::invalid_argument("Invalid attempt set row");
@@ -73,20 +73,25 @@ void chess_board::move(int row, int col) {
     if(col >_col)
         throw std::invalid_argument("Invalid attempt set col");
 
-    _chessboard[row][col]= ++_number_of_moves;
+
+    _postion_stack->top()->set_position_index(pre_postion_index);  // set the index of the point on top, so that if I need to comeback I don't need to check all points
+
+    _chessboard[row][col]= ++_number_of_moves; // will count the numbers of moves and set that to the positon in the array
 
     _postion_stack->push(new postion(row,col));
 
 //    _chessboard[row][col] = (_chessboard[row][col] == -1 ) ? 1 : ++_chessboard[row][col];
-    printf("\n you have moved to (%c,%d)\n",65+(row),col);
-
+    printf("\n you have moved to (%c,%d)\n", 65 + row, col);
 }
 
 void chess_board::backtrack() {
     postion * to_remove = _postion_stack->top();
+    int row = to_remove->get_row(), col = to_remove->get_col();
     --_number_of_moves;
-    _chessboard[to_remove->get_row()][to_remove->get_col()] = -1;
+
+    _chessboard[row][col] = -1;
     _postion_stack->pop();
+    printf("\n you backtracked from (%c,%d) to (%c,%d) \n", 65 + row, col, 65 + _postion_stack->top()->get_row(), _postion_stack->top()->get_col());
 }
 
 postion chess_board::current_position() {
