@@ -30,12 +30,12 @@ void testing(){
     while(board_controls->number_of_moves() < 32)
         warnsdroff->algorthim();
 
-    board_controls->printBoard();
+    board_controls->printToScreen();
 
     while(board_controls->number_of_moves() > 1)
         board_controls->backtrack();
 
-    board_controls->printBoard();
+    board_controls->printToScreen();
 }
 
 // Driver code
@@ -59,6 +59,9 @@ do {
 
 }while (board_controls->number_of_moves() < 64);
 
-    board_controls->printBoard();
+    board_controls->printBoard(true);
+    board_controls->printToScreen();
+
+    board_controls->printToFile("testfile.txt");
     return 0;
 }
