@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdio.h>
 #include "chess_board/chess_board.h"
 #include "Algorthims/Warnsdorffs/Warnsdorffs.h"
 #include "Algorthims/DepthFirst/DepthFirst.h"
@@ -62,6 +63,8 @@ do {
     board_controls->printBoard(true);
     board_controls->printToScreen();
 
-    board_controls->printToFile("testfile.txt");
+//    board_controls->printToFile(fopen("./testfile.txt", "w+"));
+
+
     return 0;
 }

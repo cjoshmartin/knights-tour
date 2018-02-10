@@ -48,11 +48,9 @@ int **chess_board::getBoard() const {
     return _chessboard;
 }
 
-void chess_board::printToFile(std::string file) {
-
-    std::ofstream output_file(file);
-    output_file << _moves_stringstream;
-    output_file.close();
+void chess_board::printToFile(FILE * file) {
+    fputs(_moves_stringstream.c_str(),file);
+    fclose(file);
 }
 
 

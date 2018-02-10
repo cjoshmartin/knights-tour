@@ -28,7 +28,7 @@ public:
     postion current_position();
     void move(int row, int col, int pre_postion_index);
     void printToScreen();
-    void printToFile(std::string file);
+    void printToFile(FILE * file);
     std::string printBoard(bool append);
 
 private:
