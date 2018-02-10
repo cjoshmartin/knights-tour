@@ -66,7 +66,7 @@ std::string chess_board::printBoard(bool append) {
         for (int j=0; j<= _col; j++)
         {
             if(i==0 && j!=0 )
-               board_string += string_formater::formater("%2c ",65 + (j-1)); // generates  Upcase letter by using ASCII values
+               board_string += string_formater::formater("%2d ",(j-1)); // generates  Upcase letter by using ASCII values
 
             else if(j==0)
                 ((i-1) < 0 )? board_string += string_formater::formater("%2c%c ", 42,32) : board_string += string_formater::formater("%2d| ", (i - 1)); // prints grid index
@@ -96,7 +96,7 @@ void chess_board::move(int row, int col, int pre_postion_index) {
 
 //    _chessboard[row][col] = (_chessboard[row][col] == -1 ) ? 1 : ++_chessboard[row][col];
 
-    std::string move_strings = string_formater::formater("\n you have moved to (%c,%d)\n", 65 + row, col);
+    std::string move_strings = string_formater::formater("\n you have moved to (%d,%d)\n", col, row);
     saveStringStream(move_strings);
 }
 
@@ -107,8 +107,8 @@ void chess_board::backtrack() {
 
     _chessboard[row][col] = -1;
     _postion_stack->pop();
-    std::string move_strings = string_formater::formater("\n you backtracked from (%c,%d) to (%c,%d) \n", 65 + row, col,
-                                        65 + _postion_stack->top()->get_row(), _postion_stack->top()->get_col());
+    std::string move_strings = string_formater::formater("\n you backtracked from (%d,%d) to (%d,%d) \n", col, row,
+                                         _postion_stack->top()->get_col(), _postion_stack->top()->get_row());
     saveStringStream(move_strings);
 }
 
@@ -121,6 +121,41 @@ void chess_board::saveStringStream(std::string streamer) {
 
     std::cout << streamer;
     _moves_stringstream += streamer;
+}
+
+std::string chess_board::printSuccessfulPath(bool append) {
+    if(_number_of_moves < 63)
+        throw std::invalid_argument("Path is not done finding");
+    std::string path ="";
+    postion * current_postion = _postion_stack->top();
+    int i =0;
+    while (current_postion != NULL && ++i < 63 ){
+        int col = current_postion->get_row();
+        int row = current_postion->get_col();
+
+        path = string_formater::formater("\n--->(%d,%d)",row,col) + path;
+        current_postion = current_postion->next;
+    }
+    path= "\nSuccessful Path is:\n --->(x,y):\n" + path;
+
+    if(append)
+        _moves_stringstream += path;
+
+    return path;
+}
+
+bool chess_board::is_vaild_move(int col, int row) {
+    int tx[8] = {1,1,2,2,-1,-1,-2,-2};
+    int ty[8] = {2,-2,1,-1,2,-2,1,-1};
+
+    if (_number_of_moves== 0)
+        return true;
+
+    for (int i = 0; i < _row; i++ )
+        if(_number_of_moves >0)
+            if ((row == _postion_stack->top()->get_row() + tx[i]) && (col == _postion_stack->top()->get_col() + ty[i]) && _chessboard[row][col] < 0)
+                return true;
+    return false;
 }
 
 

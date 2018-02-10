@@ -30,6 +30,8 @@ public:
     void printToScreen();
     void printToFile(FILE * file);
     std::string printBoard(bool append);
+    std::string printSuccessfulPath(bool append);
+    bool is_vaild_move(int col, int row);
 
 private:
     int ** _chessboard;

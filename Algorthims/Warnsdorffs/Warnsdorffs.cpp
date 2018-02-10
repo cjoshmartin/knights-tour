@@ -1,12 +1,3 @@
-//
-// Honor Pledge:
-//
-// I pledge that I have neither given nor
-//  received any help on this assignment.
-//
-//chajmart
-
-//
 
 #include <cstdlib>
 #include "Warnsdorffs.h"
@@ -14,24 +5,13 @@
 
 Warnsdroffs::Warnsdroffs(int ** arr, chess_board * board_controls) : Algorthims(arr,board_controls){}
 
-int Warnsdroffs::getDegree( int x, int y)
-{
-    int count = 0;
-    for (int i = 0; i < Max_Number_alg; ++i)
-        if (this->isEmpty((x + cx[i]), (y + cy[i])))
-            count++;
-    return count;
-}
 
-// Picks next point using Warnsdorff's heuristic.
-// Returns false if it is not possible to pick
-// next point.
 void Warnsdroffs::algorthim() {
-    int min_deg_idx = -1, c, min_deg = (Max_Number_alg + 1), nextrow, nextcol;
+    int min_deg, nextrow, nextcol;
+    min_deg = (Max_Number_alg + 1);
+    int c;
+    int min_deg_idx = -1;
 
-    // Try all Max_Number_alg adjacent of (*x, *y) starting
-    // from a random adjacent. Find the adjacent
-    // with minimum degree.
     int start = rand() % Max_Number_alg;
 
     int row = this->board_controls->current_position().get_row();
@@ -47,7 +27,6 @@ void Warnsdroffs::algorthim() {
         }
     }
 
-    // IF we could not find a next cell
     if (min_deg_idx == -1)
         this->board_controls->backtrack();
     else {
@@ -57,3 +36,11 @@ void Warnsdroffs::algorthim() {
 
 }
 
+int Warnsdroffs::getDegree( int x, int y)
+{
+    int count = 0;
+    for (int i = 0; i < Max_Number_alg; ++i)
+        if (this->isEmpty((x + cx[i]), (y + cy[i])))
+            count++;
+    return count;
+}

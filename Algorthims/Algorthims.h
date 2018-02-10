@@ -20,7 +20,6 @@ public:
     Algorthims(int **arr,chess_board * board_contols );
 
     virtual void algorthim(void)=0;
-
 protected:
 
     int ** arr;
