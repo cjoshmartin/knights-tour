@@ -5,7 +5,7 @@
 #include "Algorthims/DepthFirst/DepthFirst.h"
 
 #define  n 8
-
+#define LINE "-----------------------------------------------------------------------------------------------"
 
 /// (4,1)
 void first_move( chess_board * board_controls,bool debug){
@@ -16,6 +16,7 @@ void first_move( chess_board * board_controls,bool debug){
         bool cant_go_to;
         do {
             cant_go_to = false;
+            std::cout << "\n" << LINE << "\n";
            std::cout << board_controls->printBoard(false)<< "\n\tNOTE: -1 means you can move to that position. \n\n";
 
             std::cout << "||| Enter the initial position of the knight |||\n";
@@ -53,8 +54,34 @@ void first_move( chess_board * board_controls,bool debug){
                 cant_go_to = true;
             }
             else {
+                std::cout << "\ncurrent move:\n";
                 board_controls->move(col, row, 0);
 
+                std::cout << "\nList of all moves:\n";
+                board_controls->printToScreen();
+                if(board_controls->number_of_moves() > 1)
+                {
+                    char to_delete;
+
+                    std::cout << "\nWould you like to DELETE the last move (y/n) : ";
+                    std::cin >> to_delete;
+                    while(std::cin.fail() ||(to_delete != 'y' && to_delete != 'n'))
+                    {
+                        std::cout << "Sorry the input you have tried to enter is not valid, please try again: ";
+
+                        if (std::cin.fail())
+                        {
+                            std::cin.clear();
+                            std::cin.ignore(256,'\n');
+                        }
+                        std::cin >> to_delete;
+                    }
+
+                    std::cout << std::endl;
+
+                    if(to_delete =='y')
+                        board_controls->backtrack();
+                }
                 std::cout << "\nWould you like to keep going? (y/n): ";
                 std::cin >> anws;
                 std::cout << std::endl;
