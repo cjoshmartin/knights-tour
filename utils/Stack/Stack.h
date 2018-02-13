@@ -41,12 +41,12 @@ public:
     void push(postion * item);
 
     bool is_empty (void) const;
-    size_t size (void) const;
+    int size (void) const;
     void clear (void);
 
 private:
     postion * _head;
-    size_t _size;
+    int _size;
 };
 
 

@@ -11,6 +11,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <stdexcept>
 #include "chess_board.h"
 #include "../utils/string_formater.h"
 chess_board::chess_board(int rows, int col) : _chessboard(0), _row(rows),_col(col), _number_of_moves(0)  {
@@ -48,9 +49,11 @@ int **chess_board::getBoard() const {
     return _chessboard;
 }
 
-void chess_board::printToFile(FILE * file) {
-    fputs(_moves_stringstream.c_str(),file);
-    fclose(file);
+void chess_board::printToFile(std::string file) {
+    std::ofstream myfile;
+      myfile.open (file);
+      myfile << "Writing this to a file.\n";
+      myfile.close();
 }
 
 
@@ -94,8 +97,6 @@ void chess_board::move(int row, int col, int pre_postion_index) {
 
     _postion_stack->push(new postion(row,col));
 
-//    _chessboard[row][col] = (_chessboard[row][col] == -1 ) ? 1 : ++_chessboard[row][col];
-
     std::string move_strings = string_formater::formater("\n you have moved to (%d,%d)\n", col, row);
     saveStringStream(move_strings);
 }
@@ -132,11 +133,15 @@ std::string chess_board::printSuccessfulPath(bool append) {
     while (current_postion != NULL && ++i < 63 ){
         int col = current_postion->get_row();
         int row = current_postion->get_col();
-
+        
+        if (i % 8 ==0)
         path = string_formater::formater("\n--->(%d,%d)",row,col) + path;
+        else
+        path = string_formater::formater(" --->(%d,%d)",row,col) + path;
+
         current_postion = current_postion->next;
     }
-    path= "\nSuccessful Path is:\n --->(x,y):\n" + path;
+    path= "\nSuccessful Path is:\n --->(x,y):\n\n" + path;
 
     if(append)
         _moves_stringstream += path;

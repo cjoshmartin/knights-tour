@@ -28,7 +28,7 @@ public:
     postion current_position();
     void move(int row, int col, int pre_postion_index);
     void printToScreen();
-    void printToFile(FILE * file);
+    void printToFile(std::string file);
     std::string printBoard(bool append);
     std::string printSuccessfulPath(bool append);
     bool is_vaild_move(int col, int row);

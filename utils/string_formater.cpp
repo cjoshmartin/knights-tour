@@ -1,4 +1,5 @@
 #include <vector>
+#include <stdarg.h>
 #include "string_formater.h"
 
 // I found this online, I not really sure what it does #slackoverflowcopier #copy&paste ✌️

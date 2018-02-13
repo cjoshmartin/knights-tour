@@ -52,7 +52,7 @@ bool Stack::is_empty(void) const {
     return this->_size == 0;
 }
 
-size_t Stack::size(void) const {
+int Stack::size(void) const {
 
     return this->_size;
 }
