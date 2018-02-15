@@ -35,5 +35,5 @@ int postion::get_position_index() const {
 
 postion::~postion() {
 
-    delete next;
+//    delete next;
 }

@@ -28,10 +28,10 @@ protected:
     chess_board * board_controls;
     static const int  Max_Number_alg = 8;
 
-    int cx[8];
-    int cy[8];
+    int possible_rows[8];
+    int possible_cols[8];
 
-    bool isEmpty(int x, int y);
+    bool isEmpty(int row, int col);
 };
 
 

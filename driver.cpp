@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdio.h>
+
 #include "chess_board/chess_board.h"
 #include "Algorthims/Warnsdorffs/Warnsdorffs.h"
 #include "Algorthims/DepthFirst/DepthFirst.h"
@@ -125,6 +126,7 @@ do {
     board_controls->printBoard(true);
     board_controls->printSuccessfulPath(true);
     board_controls->printToScreen();
+    std::cout << std::endl;
     board_controls->printToFile("OUTPUT_of_tour.txt");
 
     delete warnsdroff;

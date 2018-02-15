@@ -24,7 +24,7 @@ public:
     void algorthim();
 private:
 
-    int getDegree( int x, int y);
+    int getDegree( int row, int col,int i, int number_of_degree);
 };
 
 #endif //KNIGTHS_TOURS_WARNSDORFFS_H

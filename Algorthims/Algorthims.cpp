@@ -13,17 +13,18 @@
 Algorthims::Algorthims(int **arr, chess_board * board_contols) : arr(arr), board_controls(board_contols){
 
     // cannot have static const in a class ????
-    int tx[8] = {1,1,2,2,-1,-1,-2,-2};
-    int ty[8] = {2,-2,1,-1,2,-2,1,-1};
+    int possible_row_filler[8] = {1,1,2,2,-1,-1,-2,-2};
+    int possible_cols_filler[8] = {2,-2,1,-1,2,-2,1,-1};
 
+    // if you have a better way of doing this please let me know
     for (int i = 0; i < 8 ; ++i) {
-        this->cx[i]= tx[i];
-        this->cy[i] = ty[i];
+        this->possible_rows[i]= possible_row_filler[i];
+        this->possible_cols[i] = possible_cols_filler[i];
     }
 }
 
-bool Algorthims::isEmpty(int x, int y) {
-    return (x >= 0 && y >= 0) && (x < Max_Number_alg && y < Max_Number_alg) && (arr[x][y] < 0);
+bool Algorthims::isEmpty(int row, int col) {
+    return (row >= 0 && col >= 0) && (row < Max_Number_alg && col < Max_Number_alg) && (arr[row][col] < 0);
 }
 
 Algorthims::~Algorthims() {
