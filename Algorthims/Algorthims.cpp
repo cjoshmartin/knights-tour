@@ -27,8 +27,6 @@ bool Algorthims::isEmpty(int x, int y) {
 }
 
 Algorthims::~Algorthims() {
-    delete[] cy;
-    delete[] cx;
 }
 
 
