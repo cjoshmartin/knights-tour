@@ -110,25 +110,25 @@ int main()
     chess_board * board_controls =     new chess_board(n,n);
 
     Warnsdroffs * warnsdroff     =     new Warnsdroffs(board_controls->getBoard(),board_controls);
-//    DepthFirst  * depthfirst     =     new DepthFirst(board_controls->getBoard(),board_controls);
+    DepthFirst  * depthfirst     =     new DepthFirst(board_controls->getBoard(),board_controls);
 
     first_move(board_controls,debug);
-/*
-do { */
-    //while (board_controls->number_of_moves() < 32)
+do { 
+    while (board_controls->number_of_moves() < 32)
       warnsdroff->algorthim();
 
-/*    while(board_controls->number_of_moves() >= 32 & board_controls->number_of_moves() < 64)
+    while(board_controls->number_of_moves() >= 32 & board_controls->number_of_moves() < 64)
        depthfirst->algorthim();
 
 }while (board_controls->number_of_moves() < 64);
-*/
-   // board_controls->printBoard(true);
-   // board_controls->printSuccessfulPath(true);
-   // board_controls->printToScreen();
-   // board_controls->printToFile("OUTPUT_of_tour.txt");
+
+    board_controls->printBoard(true);
+    board_controls->printSuccessfulPath(true);
+    board_controls->printToScreen();
+    board_controls->printToFile("OUTPUT_of_tour.txt");
 
     delete warnsdroff;
     delete board_controls;
+    delete depthfirst;
     return 0;
 }
