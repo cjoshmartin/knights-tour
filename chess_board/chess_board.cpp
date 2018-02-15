@@ -98,7 +98,7 @@ void chess_board::move(int row, int col, int pre_postion_index) {
 //
 //    //TODO
 //
-//    _postion_stack->push(new postion(row,col));
+    _postion_stack->push(new postion(row,col));
 //
     std::string move_strings = string_formater::formater("\n you have moved to (%d,%d)\n", col, row);
     saveStringStream(move_strings);
