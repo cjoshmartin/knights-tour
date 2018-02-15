@@ -32,3 +32,8 @@ void postion::set_position_index(int position_index) {
 int postion::get_position_index() const {
     return _position_index;
 }
+
+postion::~postion() {
+
+    delete next;
+}

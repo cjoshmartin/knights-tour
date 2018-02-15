@@ -25,6 +25,8 @@ public:
 
     postion * next = nullptr;
 
+    virtual ~postion();
+
 private:
     int _row,_col;
     int _position_index;
