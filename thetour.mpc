@@ -1,0 +1,29 @@
+
+project (thetour){
+    exename = TheTour
+    specific (make) {
+        compile_flags += -std=c++11
+    }
+    Source_Files {
+        driver.cpp
+        Algorthims/*.cpp
+        Algorthims/DepthFirst/*.cpp
+        Algorthims/Warnsdorffs/*.cpp
+        chess_board/*.cpp
+        utils/*.cpp
+        utils/postion/*.cpp
+        utils/Stack/*.cpp
+
+    }
+    Header_Files {
+        Algorthims/*.h
+        Algorthims/DepthFirst/*.h
+        Algorthims/Warnsdorffs/*.h
+        chess_board/*.h
+        utils/*.h
+        utils/postion/*.h
+        utils/Stack/*.h
+    }
+    Inline_Files {
+    }
+}
