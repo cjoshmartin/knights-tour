@@ -39,3 +39,4 @@ CMakeList.txt
 *.o
 TheTour
 *.swp
+Valgrind.txt
