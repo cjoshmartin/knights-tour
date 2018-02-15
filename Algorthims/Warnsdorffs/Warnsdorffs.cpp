@@ -14,9 +14,12 @@ void Warnsdroffs::algorthim() {
 
     int start = rand() % Max_Number_alg;
 
-    int row = this->board_controls->current_position().get_row();
-    int col = this->board_controls->current_position().get_col();
+    // TODO
 
+//    int row = this->board_controls->current_position().get_row();
+//    int col = this->board_controls->current_position().get_col();
+ int row =0;
+    int col =0;
     for (int count = 0; count < Max_Number_alg; ++count) {
         int i = (start + count) % Max_Number_alg;
         nextrow = row + this->cx[i];
