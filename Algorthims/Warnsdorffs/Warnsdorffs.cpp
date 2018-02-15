@@ -29,9 +29,11 @@ void Warnsdroffs::algorthim() {
 
     if (min_deg_idx == -1)
         this->board_controls->backtrack();
+    
     else {
-
-        this->board_controls->move(row + this->cx[min_deg_idx], col + this->cy[min_deg_idx],min_deg_idx);
+        int next_row =row + this->cx[min_deg_idx];
+        int next_col = col + this->cy[min_deg_idx]; 
+        this->board_controls->move(next_row,next_col ,min_deg_idx);
     }
 
 }

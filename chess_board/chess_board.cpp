@@ -112,7 +112,7 @@ void chess_board::backtrack() {
     _chessboard[row][col] = -1;
     _postion_stack->pop();
     std::string move_strings = string_formater::formater("\n you backtracked from (%d,%d) to (%d,%d) \n", col, row,
-                                         _postion_stack->top()->get_col(), _postion_stack->top()->get_row());
+                                       //  _postion_stack->top()->get_col(), _postion_stack->top()->get_row());
     saveStringStream(move_strings);
 }
 
