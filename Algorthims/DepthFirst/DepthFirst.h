@@ -19,7 +19,7 @@ public:
 
     DepthFirst(int **arr, chess_board *);
 
-    virtual ~DepthFirst();
+     ~DepthFirst();
     void algorthim(void);
 };
 

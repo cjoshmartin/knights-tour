@@ -37,6 +37,7 @@ chess_board::~chess_board(void) {
        delete [] _chessboard[i];
 
     delete [] _chessboard;
+    delete _postion_stack;
 
 }
 
@@ -52,7 +53,7 @@ int **chess_board::getBoard() const {
 void chess_board::printToFile(std::string file) {
     std::ofstream myfile;
       myfile.open (file);
-      myfile << "Writing this to a file.\n";
+      myfile << _moves_stringstream;
       myfile.close();
 }
 
@@ -94,6 +95,8 @@ void chess_board::move(int row, int col, int pre_postion_index) {
     _postion_stack->top()->set_position_index(pre_postion_index);  // set the index of the point on top, so that if I need to comeback I don't need to check all points
 
     _chessboard[row][col]= ++_number_of_moves; // will count the numbers of moves and set that to the positon in the array
+
+    //TODO
 
     _postion_stack->push(new postion(row,col));
 

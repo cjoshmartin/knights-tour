@@ -14,7 +14,6 @@
 DepthFirst::DepthFirst(int ** arr,chess_board * board_controls):Algorthims(arr,board_controls) {}
 
 DepthFirst::~DepthFirst() {
-
 }
 
 void DepthFirst::algorthim(void) {
