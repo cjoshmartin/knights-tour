@@ -91,29 +91,27 @@ void chess_board::move(int row, int col, int pre_postion_index) {
     if(col >_col && col < 0)
         throw std::invalid_argument("Invalid attempt set col");
 
-//    if (_postion_stack->size() > 0)
-//    _postion_stack->top()->set_position_index(pre_postion_index);  // set the index of the point on top, so that if I need to comeback I don't need to check all points
-//
+    if (_postion_stack->size() > 0)
+    _postion_stack->top()->set_position_index(pre_postion_index);  // set the index of the point on top, so that if I need to comeback I don't need to check all points
+
     _chessboard[row][col]= ++_number_of_moves; // will count the numbers of moves and set that to the positon in the array
-//
-//    //TODO
-//
+
     _postion_stack->push(new postion(row,col));
-//
+
     std::string move_strings = string_formater::formater("\n you have moved to (%d,%d)\n", col, row);
     saveStringStream(move_strings);
 }
 
 void chess_board::backtrack() {
-//    postion * to_remove = _postion_stack->top();
-//    int row = to_remove->get_row(), col = to_remove->get_col();
-//    --_number_of_moves;
-//
-//    _chessboard[row][col] = -1;
-//    _postion_stack->pop();
-//    std::string move_strings = string_formater::formater("\n you backtracked from (%d,%d) to (%d,%d) \n", col, row,
-//                                       //  _postion_stack->top()->get_col(), _postion_stack->top()->get_row());
-//    saveStringStream(move_strings);
+    postion * to_remove = _postion_stack->top();
+    int row = to_remove->get_row(), col = to_remove->get_col();
+    --_number_of_moves;
+
+    _chessboard[row][col] = -1;
+    _postion_stack->pop();
+    std::string move_strings = string_formater::formater("\n you backtracked from (%d,%d) to (%d,%d) \n", col, row,
+                                         _postion_stack->top()->get_col(), _postion_stack->top()->get_row());
+    saveStringStream(move_strings);
 }
 
 postion chess_board::current_position() {
