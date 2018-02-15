@@ -44,3 +44,7 @@ int Warnsdroffs::getDegree( int x, int y)
             count++;
     return count;
 }
+
+Warnsdroffs::~Warnsdroffs() {
+
+}

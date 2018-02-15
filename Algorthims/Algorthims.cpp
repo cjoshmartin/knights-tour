@@ -26,5 +26,10 @@ bool Algorthims::isEmpty(int x, int y) {
     return (x >= 0 && y >= 0) && (x < Max_Number_alg && y < Max_Number_alg) && (arr[x][y] < 0);
 }
 
+Algorthims::~Algorthims() {
+    delete[] cy;
+    delete[] cx;
+}
+
 
 

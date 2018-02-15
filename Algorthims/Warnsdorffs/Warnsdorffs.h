@@ -19,6 +19,8 @@ class Warnsdroffs : Algorthims {
 public:
     Warnsdroffs(int **, chess_board *);
 
+    virtual ~Warnsdroffs();
+
     void algorthim();
 private:
 
