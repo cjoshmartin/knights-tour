@@ -106,7 +106,11 @@ void first_move( chess_board * board_controls,bool debug){
 // Driver code
 int main()
 {
+<<<<<<< HEAD
     bool debug = false; 
+=======
+    bool debug = true; // TODO
+>>>>>>> 4509235ba1d9fc509589382521b3d2efc81cc078
 
     chess_board * board_controls =     new chess_board(n,n);
 
@@ -114,7 +118,11 @@ int main()
     DepthFirst  * depthfirst     =     new DepthFirst(board_controls->getBoard(),board_controls);
 
     first_move(board_controls,debug);
+<<<<<<< HEAD
 do {
+=======
+do { 
+>>>>>>> 4509235ba1d9fc509589382521b3d2efc81cc078
     while (board_controls->number_of_moves() < 32)
       warnsdroff->algorthim();
 
