@@ -3,4 +3,23 @@ project(knigths_tours)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(knigths_tours driver.cpp chess_board/chess_board.cpp chess_board/chess_board.h utils/postion/postion.h utils/Stack/Stack.cpp utils/Stack/Stack.h Algorthims/Warnsdorffs/Warnsdorffs.cpp Algorthims/Warnsdorffs/Warnsdorffs.h utils/postion/postion.cpp Algorthims/DepthFirst/DepthFirst.cpp Algorthims/DepthFirst/DepthFirst.h Algorthims/Algorthims.cpp Algorthims/Algorthims.h utils/string_formater.cpp utils/string_formater.h)
+add_executable(knigths_tours
+#        tour/driver.cpp
+        tour_test/tour_test_main.cpp
+        tour/chess_board/chess_board.cpp
+        tour/chess_board/chess_board.h
+        tour/utils/postion/postion.h
+        tour/utils/Stack/Stack.cpp
+        tour/utils/Stack/Stack.h
+        tour/Algorthims/Warnsdorffs/Warnsdorffs.cpp
+        tour/Algorthims/Warnsdorffs/Warnsdorffs.h
+        tour/utils/postion/postion.cpp
+        tour/Algorthims/DepthFirst/DepthFirst.cpp
+        tour/Algorthims/DepthFirst/DepthFirst.h
+        tour/Algorthims/Algorthims.cpp
+        tour/Algorthims/Algorthims.h
+        tour/utils/string_formater.cpp
+        tour/utils/string_formater.h
+        )
+
+
